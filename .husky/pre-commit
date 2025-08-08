@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -e
+
+npm run type-check
+npx lint-staged --config lint-staged.config.js
