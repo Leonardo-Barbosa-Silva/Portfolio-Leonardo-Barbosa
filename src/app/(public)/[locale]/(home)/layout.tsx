@@ -27,10 +27,10 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html suppressHydrationWarning lang={locale} className="h-full">
       <head />
 
-      <body>
+      <body className="h-full min-h-screen overflow-x-hidden overflow-y-scroll">
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"
