@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 199 100% 80%;
+    --foreground: 199 100% 12%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -19,8 +19,8 @@
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 258 100% 72.7%;
+    --muted-foreground: 258 55.3% 47%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -79,8 +79,57 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .texture-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.4'/></svg>");
+    background-repeat: repeat;
+    background-size: 320px 320px;
+    opacity: 1;
+    mix-blend-mode: multiply;
+    isolation: isolate;
+  }
+  .dark .texture-overlay {
+    mix-blend-mode: screen;
+    opacity: 0.14;
+    filter: brightness(0.55) contrast(1.1);
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
 }
