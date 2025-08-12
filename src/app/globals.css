@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 199 100% 80%;
-    --foreground: 199 100% 12%;
+    --background: 196 48% 80.1%;
+    --foreground: 206 100% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 206 100% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 86% 91.3%;
+    --popover-foreground: 206 100% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 42 86% 91.3%;
+    --primary-foreground: 42 100% 12%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 110 36% 46%;
+    --secondary-foreground: 110 70% 96%;
 
-    --muted: 258 100% 72.7%;
-    --muted-foreground: 258 55.3% 47%;
+    --muted: 196 30% 72%;
+    --muted-foreground: 42 100% 12%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 42 86% 95.2%;
+    --accent-foreground: 42 100% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -38,6 +38,15 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Soft customization */
+    --radius-xl: 1rem;
+    --surface: #efe5cf;
+    --surface-elev: #f5edd9;
+    --border-soft: #c9b58c;
+    --icon: #6e5a3e;
+    --focus: #5b7dff;
+    --edge-opacity: 0.9;
   }
   .dark {
     --background: 251 100% 4%;
@@ -50,7 +59,7 @@
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-foreground: 265 100% 34.8%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -91,19 +100,56 @@
   .texture-overlay {
     position: fixed;
     inset: 0;
-    z-index: 20;
+    z-index: 60;
     pointer-events: none;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.4'/></svg>");
     background-repeat: repeat;
-    background-size: 320px 320px;
-    opacity: 1;
+    background-size: 280px 280px;
+    opacity: 0.9;
     mix-blend-mode: multiply;
     isolation: isolate;
   }
   .dark .texture-overlay {
-    mix-blend-mode: screen;
-    opacity: 0.14;
-    filter: brightness(0.55) contrast(1.1);
+    opacity: 0;
+  }
+}
+
+@layer components {
+  .soft-base {
+    @apply relative grid place-items-center rounded-xl bg-surface text-icon shadow-soft ring-1 ring-bordersoft transition-all;
+  }
+
+  .soft-inset {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: calc(var(--radius-xl) - 2px);
+    background: var(--surface-elev);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+
+  .soft-edge {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35),
+      rgba(0, 0, 0, 0.06)
+    );
+    opacity: var(--edge-opacity);
+    pointer-events: none;
+  }
+
+  .soft-hover {
+    @apply hover:brightness-105;
+  }
+  .soft-active {
+    @apply active:brightness-95;
+  }
+  .soft-focus {
+    box-shadow: var(--shadow-focus, 0 0 0 2px var(--focus));
   }
 }
 

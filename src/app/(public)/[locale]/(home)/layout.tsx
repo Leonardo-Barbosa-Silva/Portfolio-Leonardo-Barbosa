@@ -3,6 +3,7 @@ import '@/app/globals.css'
 import { HeaderActions } from '@/components/header/actions'
 
 import { HomeBackground } from './_background'
+import { Overlay } from './_background/overlay'
 
 export default function HomeLayout({
   children,
@@ -16,6 +17,8 @@ export default function HomeLayout({
       <HeaderActions />
 
       {children}
+
+      <Overlay />
     </div>
   )
 }

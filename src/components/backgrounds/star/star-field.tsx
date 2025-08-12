@@ -26,7 +26,7 @@ type StarFieldProps = {
 export function StarField({
   count = 4000,
   radius = 2,
-  baseSpeed = 0.07,
+  baseSpeed = 0.06,
   color = '#ffffff',
   size = 0.004,
   additive = true,

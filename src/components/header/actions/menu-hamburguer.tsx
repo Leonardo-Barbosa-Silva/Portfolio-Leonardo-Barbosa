@@ -12,12 +12,20 @@ export function MenuHamburguer() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <MenuIcon />
+        <Button
+          size="icon"
+          className="relative h-12 w-12 rounded-full [&>svg]:size-6"
+        >
+          <MenuIcon className="h-8 w-8" />
+
+          <span className="sr-only">Menu</span>
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent>
+      <DropdownMenuContent
+        sideOffset={0}
+        className="w-[--radix-dropdown-menu-trigger-width] min-w-0"
+      >
         <DropdownMenuItem>
           <Link href="/">Home</Link>
         </DropdownMenuItem>

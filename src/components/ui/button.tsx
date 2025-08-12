@@ -5,12 +5,13 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+          'bg-primary text-primary-foreground shadow hover:bg-primary/90 dark:bg-transparent dark:text-foreground dark:hover:bg-primary/10',
+        soft: 'relative soft-base soft-hover active:soft-active focus-visible:ring-2 focus-visible:ring-[var(--focus)]',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:
@@ -25,11 +26,17 @@ const buttonVariants = cva(
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-9 w-9',
+        soft: 'h-12 w-12',
+      },
+      radius: {
+        default: 'rounded-md',
+        soft: 'rounded-2xl',
       },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
+      radius: 'default',
     },
   },
 )
@@ -41,14 +48,26 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    { className, variant, size, radius, asChild = false, children, ...props },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : 'button'
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, radius, className }))}
         ref={ref}
         {...props}
-      />
+      >
+        {/* Layers do efeito soft */}
+        {variant === 'soft' && (
+          <>
+            <span aria-hidden className="soft-inset" />
+            <span aria-hidden className="soft-edge" />
+          </>
+        )}
+        <span className="relative z-10">{children}</span>
+      </Comp>
     )
   },
 )

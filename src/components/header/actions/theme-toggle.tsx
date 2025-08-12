@@ -19,9 +19,12 @@ export function ThemeModeToggle({ className }: { className?: string }) {
 
   return (
     <Button
-      variant="ghost"
       size="icon"
-      className={cn('relative rounded-full', className)}
+      variant="soft"
+      className={cn(
+        'relative h-12 w-12 hover:animate-spin-once [&>svg]:size-6',
+        className,
+      )}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {ThemeIcon(theme)}

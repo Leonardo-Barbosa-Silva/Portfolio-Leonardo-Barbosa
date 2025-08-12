@@ -1,21 +1,33 @@
 import '@/app/globals.css'
 
 import type { Metadata } from 'next'
-import { Montserrat, Open_Sans as OpenSans } from 'next/font/google'
+import {
+  Libertinus_Math as LibertinusMath,
+  Montserrat,
+  Rubik,
+} from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 
 import { ThemeProvider } from '@/contexts/theme'
 import { routing } from '@/i18n/routing'
 
+const rubik = Rubik({
+  subsets: ['latin'],
+  variable: '--font-rubik',
+})
+
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
 })
 
-const openSans = OpenSans({
+const libertinusMath = LibertinusMath({
+  weight: ['400'],
   subsets: ['latin'],
-  variable: '--font-open-sans',
+  variable: '--font-libertinus-math',
+  display: 'swap',
+  fallback: ['var(--font-montserrat)', 'sans-serif'],
 })
 
 export const metadata: Metadata = {
@@ -42,7 +54,7 @@ export default async function RootLayout({
       <head />
 
       <body
-        className={`h-full min-h-screen ${montserrat.variable} ${openSans.variable}`}
+        className={`h-full min-h-screen ${rubik.variable} ${montserrat.variable} ${libertinusMath.variable}`}
       >
         <NextIntlClientProvider>
           <ThemeProvider
@@ -52,8 +64,6 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {children}
-
-            <div className="texture-overlay" aria-hidden="true" />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
