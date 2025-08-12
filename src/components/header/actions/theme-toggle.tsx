@@ -19,8 +19,9 @@ export function ThemeModeToggle({ className }: { className?: string }) {
 
   return (
     <Button
-      size="icon"
       variant="soft"
+      size="icon"
+      radius="soft"
       className={cn(
         'relative h-12 w-12 hover:animate-spin-once [&>svg]:size-6',
         className,

@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-primary text-primary-foreground shadow hover:bg-primary/90 dark:bg-transparent dark:text-foreground dark:hover:bg-primary/10',
-        soft: 'relative soft-base soft-hover active:soft-active focus-visible:ring-2 focus-visible:ring-[var(--focus)]',
+        soft: 'bg-soft text-soft-foreground soft-3d',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:
@@ -30,7 +30,7 @@ const buttonVariants = cva(
       },
       radius: {
         default: 'rounded-md',
-        soft: 'rounded-2xl',
+        soft: 'rounded-xl',
       },
     },
     defaultVariants: {
@@ -48,26 +48,14 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className, variant, size, radius, asChild = false, children, ...props },
-    ref,
-  ) => {
+  ({ className, variant, size, radius, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, radius, className }))}
         ref={ref}
         {...props}
-      >
-        {/* Layers do efeito soft */}
-        {variant === 'soft' && (
-          <>
-            <span aria-hidden className="soft-inset" />
-            <span aria-hidden className="soft-edge" />
-          </>
-        )}
-        <span className="relative z-10">{children}</span>
-      </Comp>
+      />
     )
   },
 )

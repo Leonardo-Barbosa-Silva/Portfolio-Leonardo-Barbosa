@@ -9,24 +9,9 @@ module.exports = {
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         math: ['var(--font-libertinus-math)', 'sans-serif'],
       },
-      borderRadius: {
-        soft: '1rem',
-      },
-      boxShadow: {
-        soft: '0 1px 0 rgba(0,0,0,.06), 0 8px 16px rgba(0,0,0,.10)',
-        'inner-soft': 'inset 0 1px 2px rgba(0,0,0,.06)',
-        focus: '0 0 0 2px var(--focus)',
-      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-
-        /* Soft customization */
-        surface: 'var(--surface)',
-        surfacee: 'var(--surface-elev)',
-        bordersoft: 'var(--border-soft)',
-        icon: 'var(--icon)',
-
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -50,6 +35,11 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+        },
+        soft: {
+          DEFAULT: 'hsl(var(--soft))',
+          foreground: 'hsl(var(--soft-foreground))',
+          ring: 'hsl(var(--soft-ring))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
