@@ -29,7 +29,7 @@ export function HomeBackground() {
   if (!isMounted) return null
 
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full">
+    <div className="fixed inset-0 -z-10 h-full w-full">
       <AnimatePresence mode="sync" initial={false}>
         <motion.div
           key={resolvedTheme || 'light'}

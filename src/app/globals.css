@@ -30,8 +30,7 @@
     --soft-ring: 42 100% 30%;
 
     --soft-shadow: 42 100% 12%;
-    --soft-shadow-internal: 42 100% 22%;
-    --soft-highlight: 42 100% 100%;
+    --soft-shadow-internal: 42 100% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -58,7 +57,7 @@
     --popover-foreground: 210 40% 98%;
 
     --primary: 265 100% 91.8%;
-    --primary-foreground: 265 100% 34.8%;
+    --primary-foreground: 265 100% 33%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -69,8 +68,9 @@
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
-    --neon: 251 100% 6%;
-    --neon-foreground: 210 40% 98%;
+    --neon: 265 100% 91.8%;
+    --neon-foreground: 265 100% 49.3%;
+    --neon-ring: 265 100% 97.4%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -116,14 +116,14 @@
 }
 
 @layer components {
-  .light .soft-3d {
+  .soft-ui {
     position: relative;
     background-color: hsl(var(--soft));
     color: hsl(var(--soft-foreground));
     box-shadow:
       0 4px 10px 2px hsl(var(--soft-shadow) / 0.3),
-      -2px -2px 3px 1px hsl(var(--soft-shadow-internal) / 0.5) inset,
-      2px 2px 4px 2px hsl(var(--soft-highlight)) inset;
+      inset -2px -2px 5px hsl(var(--soft-shadow-internal) / 0.7),
+      inset 2px 2px 4px 2px #fff;
     outline: none;
     transition:
       transform 120ms ease,
@@ -132,7 +132,7 @@
       color 120ms ease;
   }
 
-  .light .soft-3d:hover {
+  .soft-ui-hover {
     transform: translateY(-1px);
     box-shadow:
       0 6px 14px 4px hsl(var(--soft-shadow) / 0.3),
@@ -140,7 +140,7 @@
       2px 2px 4px 2px hsl(var(--soft-highlight) / 0.5) inset;
   }
 
-  .light .soft-3d:active {
+  .soft-ui-active {
     transform: translateY(0px);
     box-shadow:
       0 2px 4px hsl(var(--soft-shadow) / 0.9),
@@ -148,17 +148,25 @@
       2px 2px 4px 2px hsl(var(--soft-highlight) / 0.5) inset;
   }
 
-  .dark .neon-3d {
-    position: relative;
-    background: hsl(var(--neon));
-    backdrop-filter: blur(100px);
+  .neon-ui {
+    background-color: hsl(var(--neon) / 0.1);
+    color: #fff;
+    border: 1px solid hsl(var(--neon-ring) / 0.2);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(1.8px);
+    box-shadow:
+      0 0 8px hsl(var(--neon-foreground) / 0.6),
+      inset 0 0 4px 0.5px hsl(var(--neon-ring) / 0.8);
   }
 
-  .dark .neon-3d:hover {
+  .neon-ui-hover {
     transform: translateY(-1px);
+    box-shadow:
+      0 2px 10px 1px hsl(var(--neon-foreground) / 0.6),
+      inset 0 0 4px 1px hsl(var(--neon-ring) / 0.9);
   }
 
-  .dark .neon-3d:active {
+  .neon-ui-active {
     transform: translateY(0);
   }
 }

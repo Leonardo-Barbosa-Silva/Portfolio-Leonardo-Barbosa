@@ -11,7 +11,7 @@ export default function HomeLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="relative h-full w-full overflow-x-hidden overflow-y-scroll">
+    <div className="relative w-full overflow-x-hidden overflow-y-scroll">
       <HomeBackground />
 
       <HeaderActions />

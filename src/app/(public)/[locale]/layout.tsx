@@ -54,7 +54,7 @@ export default async function RootLayout({
       <head />
 
       <body
-        className={`h-full min-h-screen ${rubik.variable} ${montserrat.variable} ${libertinusMath.variable}`}
+        className={`min-h-screen ${rubik.variable} ${montserrat.variable} ${libertinusMath.variable}`}
       >
         <NextIntlClientProvider>
           <ThemeProvider

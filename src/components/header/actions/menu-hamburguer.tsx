@@ -1,27 +1,26 @@
 import { Link, MenuIcon } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { ThemedButton } from '@/components/ui/themed-button'
 
 export function MenuHamburguer() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="thematic"
+        <ThemedButton
           size="icon"
-          radius="thematic"
+          radius="rounded"
           className="relative h-12 w-12 [&>svg]:size-6"
         >
           <MenuIcon className="h-8 w-8" />
 
           <span className="sr-only">Menu</span>
-        </Button>
+        </ThemedButton>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
