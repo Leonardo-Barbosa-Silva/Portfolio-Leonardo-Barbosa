@@ -13,9 +13,9 @@ export function MenuHamburguer() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="soft"
+          variant="thematic"
           size="icon"
-          radius="soft"
+          radius="thematic"
           className="relative h-12 w-12 [&>svg]:size-6"
         >
           <MenuIcon className="h-8 w-8" />

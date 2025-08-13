@@ -25,13 +25,13 @@
     --accent: 42 100% 86.5%;
     --accent-foreground: 42 100% 25.8%;
 
-    --soft: 42 100% 91.3%;
+    --soft: 42 100% 93.3%;
     --soft-foreground: 42 100% 20%;
     --soft-ring: 42 100% 30%;
 
     --soft-shadow: 42 100% 12%;
     --soft-shadow-internal: 42 100% 22%;
-    --soft-highlight: 42 100% 96.5%;
+    --soft-highlight: 42 100% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -57,7 +57,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 265 100% 91.8%;
     --primary-foreground: 265 100% 34.8%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -68,6 +68,9 @@
 
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
+
+    --neon: 251 100% 6%;
+    --neon-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -113,12 +116,14 @@
 }
 
 @layer components {
-  .soft-3d {
+  .light .soft-3d {
     position: relative;
+    background-color: hsl(var(--soft));
+    color: hsl(var(--soft-foreground));
     box-shadow:
       0 4px 10px 2px hsl(var(--soft-shadow) / 0.3),
-      -2px -2px 4px 1px hsl(var(--soft-shadow-internal) / 0.5) inset,
-      2px 2px 2px 2px hsl(var(--soft-highlight)) inset;
+      -2px -2px 3px 1px hsl(var(--soft-shadow-internal) / 0.5) inset,
+      2px 2px 4px 2px hsl(var(--soft-highlight)) inset;
     outline: none;
     transition:
       transform 120ms ease,
@@ -127,22 +132,34 @@
       color 120ms ease;
   }
 
-  .soft-3d:hover {
+  .light .soft-3d:hover {
     transform: translateY(-1px);
     box-shadow:
       0 6px 14px 4px hsl(var(--soft-shadow) / 0.3),
-      -2px -2px 4px 1px hsl(var(--soft-shadow-internal) / 0.3) inset,
-      2px 2px 2px 2px hsl(var(--soft-highlight)) inset;
+      -2px -2px 4px 1px hsl(var(--soft-shadow-internal) / 0.2) inset,
+      2px 2px 4px 2px hsl(var(--soft-highlight) / 0.5) inset;
   }
 
-  .soft-3d:active {
+  .light .soft-3d:active {
     transform: translateY(0px);
     box-shadow:
-      0 2px 4px hsl(var(--soft-shadow) / 0.2),
-      /* sombra externa curta e suave */ -1px -1px 3px 1px
-        hsl(var(--soft-shadow-internal) / 0.5) inset,
-      /* rebaixo interno mais forte */ 2px 2px 4px 2px
-        hsl(var(--soft-highlight) / 0.85) inset; /* brilho mais suave para simular pressão */
+      0 2px 4px hsl(var(--soft-shadow) / 0.9),
+      -1px -1px 3px 1px hsl(var(--soft-shadow-internal) / 0.2) inset,
+      2px 2px 4px 2px hsl(var(--soft-highlight) / 0.5) inset;
+  }
+
+  .dark .neon-3d {
+    position: relative;
+    background: hsl(var(--neon));
+    backdrop-filter: blur(100px);
+  }
+
+  .dark .neon-3d:hover {
+    transform: translateY(-1px);
+  }
+
+  .dark .neon-3d:active {
+    transform: translateY(0);
   }
 }
 

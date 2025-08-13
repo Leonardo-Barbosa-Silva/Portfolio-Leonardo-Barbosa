@@ -4,12 +4,12 @@ export function LightBackground() {
   return (
     <>
       <Image
-        src="/images/nostalgic-happy-2.png"
+        src="/images/nostalgic-happy.png"
         alt="Sun"
         priority
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-        className="-z-10 h-full w-full object-cover"
+        className="-z-10 h-full w-full object-cover opacity-40"
       />
     </>
   )

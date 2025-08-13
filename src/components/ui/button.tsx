@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-primary text-primary-foreground shadow hover:bg-primary/90 dark:bg-transparent dark:text-foreground dark:hover:bg-primary/10',
-        soft: 'bg-soft text-soft-foreground soft-3d',
+        thematic: 'soft-3d neon-3d',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:
@@ -26,11 +26,11 @@ const buttonVariants = cva(
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-9 w-9',
-        soft: 'h-12 w-12',
+        thematic: 'h-12 w-12',
       },
       radius: {
         default: 'rounded-md',
-        soft: 'rounded-xl',
+        thematic: 'rounded-xl',
       },
     },
     defaultVariants: {
