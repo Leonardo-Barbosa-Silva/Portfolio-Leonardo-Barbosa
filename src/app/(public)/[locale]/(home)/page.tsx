@@ -1,8 +1,8 @@
-import { HeroSection } from '@/sections/hero'
+import { HeroSection } from '@/features/home/sections/hero'
 
 export default function HomePage() {
   return (
-    <div className="flex w-full flex-col">
+    <div className="mt-16 flex w-full flex-col">
       <HeroSection />
     </div>
   )

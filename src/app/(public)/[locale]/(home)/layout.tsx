@@ -1,9 +1,8 @@
 import '@/app/globals.css'
 
-import { HeaderActions } from '@/components/header/actions'
-
-import { HomeBackground } from './_background'
-import { Overlay } from './_background/overlay'
+import { Background } from '@/features/home/background'
+import { Overlay } from '@/features/home/background/overlay'
+import { Header } from '@/features/home/header'
 
 export default function HomeLayout({
   children,
@@ -11,14 +10,14 @@ export default function HomeLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="relative w-full overflow-x-hidden overflow-y-scroll">
-      <HomeBackground />
-
-      <HeaderActions />
-
-      {children}
+    <div className="relative w-full overflow-x-hidden">
+      <Background />
 
       <Overlay />
+
+      <Header />
+
+      {children}
     </div>
   )
 }

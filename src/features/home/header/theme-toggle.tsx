@@ -3,14 +3,11 @@
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-import { getUiDesignClass } from '@/components/helpers/get-ui-design-class'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 function ThemeIcon(theme?: string) {
-  if (theme === 'dark') {
-    return <Sun />
-  }
+  if (theme === 'dark') return <Sun />
 
   return <Moon />
 }
@@ -18,14 +15,12 @@ function ThemeIcon(theme?: string) {
 export function ThemeModeToggle({ className }: { className?: string }) {
   const { setTheme, theme } = useTheme()
 
-  const variant = getUiDesignClass(theme)
-
   return (
     <Button
-      variant={variant}
       size="icon"
+      variant="ghost"
       radius="rounded"
-      className={cn('relative h-12 w-12 [&>svg]:size-6', className)}
+      className={cn('hover:bg-transparent', className)}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {ThemeIcon(theme)}

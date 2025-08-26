@@ -8,6 +8,7 @@ module.exports = {
         sans: ['var(--font-rubik)', 'sans-serif'],
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         math: ['var(--font-libertinus-math)', 'sans-serif'],
+        grid: ['var(--font-bitcount-grid-double)', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -35,11 +36,6 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
-        },
-        soft: {
-          DEFAULT: 'hsl(var(--soft))',
-          foreground: 'hsl(var(--soft-foreground))',
-          ring: 'hsl(var(--soft-ring))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
